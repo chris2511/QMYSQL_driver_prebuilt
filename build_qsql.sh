@@ -16,12 +16,12 @@ else
   cd src/plugins/sqldrivers
   if [ "$2" = "linux" ]
   then
-    cmake -B build -DMySQL_INCLUDE_DIR=/usr/include/mariadb/ -DMySQL_LIBRARY=/usr/lib/x86_64-linux-gnu/libmariadb.so -DCMAKE_BUILD_TYPE=Release
-    make
+    cmake -DMySQL_INCLUDE_DIR=/usr/include/mariadb/ -DMySQL_LIBRARY=/usr/lib/x86_64-linux-gnu/libmariadb.so -DCMAKE_BUILD_TYPE=Release .
+    cmake --build .
   elif [ "$2" = "mac" ]
   then
     export HOMEBREW="$(brew --prefix)"
-    cmake -DMySQL_INCLUDE_DIR="$HOMEBREW"/include/mariadb -DMySQL_LIBRARY="$HOMEBREW"/lib/libmariadb.dylib -DCMAKE_PREFIX_PATH=$QT_DIR/macos -DCMAKE_BUILD_TYPE=Release
-    make
+    cmake -DMySQL_INCLUDE_DIR="$HOMEBREW"/include/mariadb -DMySQL_LIBRARY="$HOMEBREW"/lib/libmariadb.dylib -DCMAKE_PREFIX_PATH=$QT_DIR/macos -DCMAKE_BUILD_TYPE=Release .
+    cmake --build .
   fi
 fi

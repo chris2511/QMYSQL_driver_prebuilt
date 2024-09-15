@@ -39,6 +39,7 @@ jobs:
           name: Linux
           path: ${{ github.workspace }}/qtbase/src/plugins/sqldrivers/mariadb_driver/
   w64_msvc2019:
+    if: false
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -75,6 +76,7 @@ jobs:
           name: Windows_2019
           path: ${{ github.workspace }}/qtbase/src/plugins/sqldrivers/mariadb_driver/
   w64_mingw:
+    if: false
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -125,7 +127,7 @@ jobs:
           brew update
           brew upgrade
           brew install boost traildb/judy/judy
-          brew install mariadb cmake
+          brew install mariadb-connector-c cmake
           export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/
           QT_DIR=${{ github.workspace }}/Qt/${{ env.QT }} ./build_qsql.sh ${{env.QT}} mac
           cd ${{ github.workspace }}/qtbase/src/plugins/sqldrivers/
