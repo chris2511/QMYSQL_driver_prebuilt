@@ -21,7 +21,7 @@ else
   elif [ "$2" = "mac" ]
   then
     export HOMEBREW="$(brew --prefix)"
-    cmake -DMySQL_INCLUDE_DIR="$HOMEBREW"/include/mariadb -DMySQL_LIBRARY="$HOMEBREW"/lib/libmariadb.dylib -DCMAKE_PREFIX_PATH=$QT_DIR/macos -DCMAKE_BUILD_TYPE=Release .
+    cmake -DMySQL_INCLUDE_DIR="$HOMEBREW"/include/mariadb -DMySQL_LIBRARY="$HOMEBREW"/lib/mariadb/libmariadb.dylib -DCMAKE_PREFIX_PATH=$QT_DIR/macos -DCMAKE_BUILD_TYPE=Release .
     cmake --build .
   fi
 fi
