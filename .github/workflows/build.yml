@@ -8,7 +8,7 @@ env:
   QT: 6.6.3
 
 jobs:
-  job_1:
+  linux:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -38,7 +38,7 @@ jobs:
         with:
           name: Linux
           path: ${{ github.workspace }}/qtbase/src/plugins/sqldrivers/mariadb_driver/
-  job_2:
+  w64_msvc2019:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -74,7 +74,7 @@ jobs:
         with:
           name: Windows_2019
           path: ${{ github.workspace }}/qtbase/src/plugins/sqldrivers/mariadb_driver/
-  job_3:
+  w64_mingw:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -109,7 +109,7 @@ jobs:
         with:
           name: Windows_Mingw
           path: ${{ github.workspace }}/qtbase/src/plugins/sqldrivers/mariadb_driver/
-  job_4:
+  macos:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -127,7 +127,7 @@ jobs:
           brew install boost traildb/judy/judy
           brew install mariadb cmake
           export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/
-          ./build_qsql.sh ${{env.QT}} mac
+          QT_DIR=${{ github.workspace }}/Qt/${{ env.QT }} ./build_qsql.sh ${{env.QT}} mac
           cd ${{ github.workspace }}/qtbase/src/plugins/sqldrivers/
           mkdir -p mariadb_driver/plugins/sqldrivers
           cp plugins/sqldrivers/libqsqlmysql.dylib mariadb_driver/plugins/sqldrivers
